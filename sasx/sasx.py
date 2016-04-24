@@ -213,6 +213,12 @@ class SasxMagics(Magics):
             if (len(keep)==0 & (var not in drop)) or (len(drop)==0 & (var in keep)) :
                 str_code = str_code + "    " + df_out + "['" + var + "'] = series_" + var + "\n"  
         
+        #Drop & keep
+        if (len(drop))>0:
+            str_code = str_code + "    " + df_out + ".drop(['" + "','".join(drop) + "'], axis=1, inplace=True)\n"
+        elif (len(keep))>0:
+            str_code = str_code + "    " + df_out + "=" + df_out + "[['" + "','".join(keep) + "']]\n"
+        
         #Add output DataFrame to globals()
         str_code = str_code + "    globals()['" +  df_out + "'] = " + df_out + "\n"
         
