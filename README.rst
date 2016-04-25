@@ -1,6 +1,6 @@
-====
-SASX
-====
+======
+ SASX
+======
 Data manipulation in Python for SAS users, with the %%sasx magic command.
 
 SASX (Simple dAta SyntaX) has the best of both worlds:

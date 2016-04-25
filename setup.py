@@ -13,10 +13,11 @@ from os import path
 
 here = path.abspath(path.dirname(__file__))
 
-version = '0.1'
+version = '0.1.1'
 
 install_requires = [
-    'ipython',
+	'ipython',
+	'pandas',
 ]
 
 # Get the long description from the README file
@@ -34,7 +35,7 @@ setup(
     license='MIT',
     classifiers=[
         'Development Status :: 3 - Alpha',
-        'Intended Audience :: Developers',
+        'Intended Audience :: End Users/Desktop',
         'Topic :: Database',
         'Topic :: Database :: Front-Ends',
         'License :: OSI Approved :: MIT License',
