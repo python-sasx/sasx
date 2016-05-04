@@ -20,9 +20,23 @@ install_requires = [
 	'pandas',
 ]
 
-# Get the long description from the README file
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-    long_description = f.read()
+long_description = """
+Data manipulation in Python for SAS users
+
+SASX
+----
+
+Data manipulation in Python for SAS users, with the %%sasx magic command.
+
+SASX (Simple dAta SyntaX) has the best of both worlds:
+- Full access to python, numpy, pandas (like Python)
+- A few extra keywords to allow row-by-row operations (like SAS)
+
+Install the lastest release with:
+pip install sasx
+
+More info:  https://github.com/python-sasx/sasx
+"""
 
 setup(
     name='sasx',

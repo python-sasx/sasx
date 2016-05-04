@@ -1,1 +1,1 @@
-from .sasx import *
+from .magic import *
