@@ -8,30 +8,60 @@ SASX (Simple dAta SyntaX) has the best of both worlds:
 - Full access to python, numpy, pandas (like Python)
 - A few extra keywords to allow row-by-row operations (like SAS)
 
-Same result, different syntax
-------------------------------
+Example 1
+----------
 
 SAS:
 ::
-   data weight_loss;
-      set weight;
-      Percent_loss = min(current_weight - initial_weight, 0)  / initial_weight;
-      keep Name Percent_loss;
-   run;
+	data tips;
+		set tips;
+		total_bill = total_bill - 2;
+		new_bill = total_bill / 2;
+	run;
 
 SASX (Simple dAta SyntaX):
 ::
-   %%sasx
-   data weight_loss:
-      set weight
-      Percent_loss = min(current_weight - initial_weight, 0)  / initial_weight
-      keep Name Percent_loss
-
+	%%sasx
+	data tips
+		set tips
+		total_bill = total_bill - 2
+		new_bill = total_bill / 2
 
 Python:
 ::
-    weight_loss = weight[['Name']].copy()
-    weight_loss['Percent_loss'] = np.minimum(weight.current_weight - weight.initial_weight, 0) / weight.initial_weight
+	tips['total_bill'] = tips['total_bill'] - 2
+	tips['new_bill'] = tips['total_bill'] / 2.0
+
+http://pandas.pydata.org/pandas-docs/stable/comparison_with_sas.html
+
+Example 2
+----------
+
+SAS:
+::
+	data tips;
+		set tips;
+		if total_bill < 10 then bucket = 'low';
+		else bucket = 'high';
+		keep sex bucket tip;
+	run;
+
+SASX (Simple dAta SyntaX):
+::
+	%%sasx
+	data tips
+		set tips
+		if total_bill < 10:
+			bucket = 'low'
+		else:
+			bucket = 'high'
+		keep sex bucket tip
+
+Python:
+::
+	tips['bucket'] = np.where(tips['total_bill'] < 10, 'low', 'high')
+	tips = tips[['sex', 'bucket', 'tip']]
+
 
 Installing
 ----------
