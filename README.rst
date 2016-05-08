@@ -22,7 +22,7 @@ SAS:
 SASX (Simple dAta SyntaX):
 ::
 	%%sasx
-	data tips
+	data tips:
 		set tips
 		total_bill = total_bill - 2
 		new_bill = total_bill / 2
@@ -49,7 +49,7 @@ SAS:
 SASX (Simple dAta SyntaX):
 ::
 	%%sasx
-	data tips
+	data tips:
 		set tips
 		if total_bill < 10:
 			bucket = 'low'
